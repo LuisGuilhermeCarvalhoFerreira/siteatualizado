@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub</title>
+    
+    <link rel="external" href="reset.css">
+    <link rel="stylesheet" href="cadastro.css"> 
+    <link rel="icon" href="Mídia/imagens/iconedosite.ico">
+</head>
+<body>
+    <nav> 
+        <div class="logo">TechHub</div>
+        <div class="navitems">
+            <a href="Index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contacts.html">Contacts</a>  
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Formulário de Cadastro -->
+        <form id="formCadastro" onsubmit="return validarSenha()"> 
+            <label for="username">Nome de usuário:</label>
+            <input type="text" id="username" name="username" required> 
+            <br><br>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required minlength="8">
+            <br><br>
+            <label for="confirmacaoSenha">Confirmação de Senha:</label>
+            <input type="password" id="confirmacaoSenha" name="confirmacaoSenha" required>
+            <br><br>
+            <input type="submit" value="Cadastrar">
+        </form>
+
+        <!-- Formulário de Idade -->
+        <form id="formIdade" onsubmit="return validarIdade()"> 
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required> 
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <!-- Formulário de Estado e Cidade -->
+        <h2>Escolha seu estado e cidade:</h2>
+        <form>
+            <label for="estado">Estado:</label>
+            <select id="estado" onchange="mostrarCidades()">
+                <option value="">Selecione...</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="ES">Espírito Santo</option>
+            </select>
+            <br><br>
+            <label for="cidades">Cidade:</label>
+            <select id="cidades">
+                <option value="">Selecione um estado primeiro</option>
+            </select>
+        </form>
+    </div>
+
+    <script>
+        // Função para validar a senha
+        function validarSenha() {
+            var senha = document.getElementById("senha").value;
+            var confirmacaoSenha = document.getElementById("confirmacaoSenha").value;
+        
+            var regexLetraMinuscula = /[a-z]/;
+            var regexLetraMaiuscula = /[A-Z]/;
+            var regexNumero = /[0-9]/;
+            var regexCaracterEspecial = /[!@#$%^&*]/;
+        
+            if (senha.length < 8) {
+                alert("A senha deve ter no mínimo 8 caracteres.");
+                return false;
+            }
+        
+            if (!regexLetraMinuscula.test(senha)) {
+                alert("A senha deve conter pelo menos uma letra minúscula (a-z).");
+                return false;
+            }
+        
+            if (!regexLetraMaiuscula.test(senha)) {
+                alert("A senha deve conter pelo menos uma letra maiúscula (A-Z).");
+                return false;
+            }
+        
+            if (!regexNumero.test(senha)) {
+                alert("A senha deve conter pelo menos um número (0-9).");
+                return false;
+            }
+        
+            if (!regexCaracterEspecial.test(senha)) {
+                alert("A senha deve conter pelo menos um caractere especial (!@#$%^&*).");
+                return false;
+            }
+        
+            if (senha !== confirmacaoSenha) {
+                alert("A senha e a confirmação de senha devem ser iguais.");
+                return false;
+            }
+        
+            alert("Cadastro realizado com sucesso!  ");
+            return true;
+        }
+
+        // Função para validar a idade
+        function validarIdade() {
+            var idade = document.getElementById('idade').value;
+            if (idade >= 18) {
+                alert('Idade válida. Formulário enviado.');
+                return true; // Permite o envio do formulário
+            } else {
+                alert('Você deve ter 18 anos ou mais para enviar este formulário.');
+                return false; // Impede o envio do formulário
+            }
+        }
+
+        // Função para mostrar cidades com base no estado selecionado
+        function mostrarCidades() {
+            var estado = document.getElementById("estado").value;
+            var selectCidades = document.getElementById("cidades");
+        
+            // Remove todas as opções, exceto a primeira
+            while (selectCidades.options.length > 1) {
+                selectCidades.remove(1);
+            }
+        
+            // Adiciona as opções de cidades baseadas no estado selecionado
+            switch (estado) {
+                case "SP":
+                    adicionarOpcao(selectCidades, "São Paulo");
+                    adicionarOpcao(selectCidades, "Campinas");
+                    adicionarOpcao(selectCidades, "Santos");
+                    break;
+                case "RJ":
+                    adicionarOpcao(selectCidades, "Rio de Janeiro");
+                    adicionarOpcao(selectCidades, "Niterói");
+                    adicionarOpcao(selectCidades, "Duque de Caxias");
+                    break;
+                case "MG":
+                    adicionarOpcao(selectCidades, "Belo Horizonte");
+                    adicionarOpcao(selectCidades, "Uberlândia");
+                    adicionarOpcao(selectCidades, "Juiz de Fora");
+                    break;
+                case "ES":
+                    adicionarOpcao(selectCidades, "Vitória");
+                    adicionarOpcao(selectCidades, "Vila Velha");
+                    adicionarOpcao(selectCidades, "Cariacica");
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        // Função auxiliar para adicionar opções ao select
+        function adicionarOpcao(select, texto) {
+            var option = document.createElement("option");
+            option.text = texto;
+            option.value = texto; // Adiciona valor à opção
+            select.add(option);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+body{
+    background-color: #090808d7;   
+   
+   }
+   
+.navitems a:hover {
+    background-color: #ddd;
+    color: #333;
+   }
+
+.navitems {
+    background-color: #333;
+    overflow: hidden;
+}
+.navitems a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #114d76;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+p {
+    font-family: Arial, sans-serif; /* Fonte Arial como exemplo */
+    font-size: 16px;
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: #ffffffa7; /* Cor do texto */
+    text-align: justify; /* Alinhamento justificado */ }  
+    header, footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;}  
+
+.logo{
+    font-family: Arial, sans-serif; /* Escolha a fonte desejada */
+            font-size: 3rem; /* Tamanho da fonte */
+            color: #4169E1; /* Cor do texto */
+            text-align: center; /* Alinhamento do texto */
+            text-transform: uppercase; /* Transforma o texto em maiúsculo */
+            margin-bottom: 20px; /* Margem inferior */
+            text-shadow: 4px 4px 0px #000000f9; }  
+
+c1{font-family: Georgia, 'Times New Roman', Times, serif;
+color: #333;
+}   
+main {
+    width: 80%; /* Largura menor que a body */
+    margin: 0 auto; /* Centraliza a main */
+    background-color: #1c1c1c; /* Fundo diferente da body */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+} 
+h3{
+    color: #e9e6d8f1;
+}
+
+/* *{=reset css  */ 
+/* reset css=*{ margin: 0;
+font-size: 1em;
+border: 0 ;
+pad:0 ; 
+text-decoration: none;} */ 
+/* a visited= quando o link ja foi visitado */
+/* pseudoclasse= configurando uma classe  */
